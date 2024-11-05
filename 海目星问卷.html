@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问卷星登录页面</title>
+</head>
+<body>
+    <h2>请输入您的名字</h2>
+    <form onsubmit="return checkLogin()">
+        <label for="name">名字:</label>
+        <input type="text" id="name" required>
+        <br><br>
+        <button type="submit">进入问卷</button>
+    </form>
+
+    <script>
+        // 定义名字和链接的映射关系
+        const nameLinkMap = {
+            "张云素": "https://www.wjx.cn/vm/rXmyE4n.aspx#", 
+            "李XX": "https://example.com/link2",
+            "王YY": "https://example.com/link3",
+            // 可以继续添加更多名字和对应链接
+            "陈AA": "https://example.com/link4",
+            "刘BB": "https://example.com/link5"
+        };
+
+        // 检查名字并跳转的函数
+        function checkLogin() {
+            // 获取输入的名字
+            const name = document.getElementById('name').value;
+
+            // 检查名字是否在映射关系中
+            if (nameLinkMap.hasOwnProperty(name)) {
+                // 如果名字存在，跳转到对应的链接
+                window.location.href = nameLinkMap[name];
+                return false; // 阻止表单的默认提交
+            } else {
+                // 如果名字不在映射中，显示错误提示
+                alert("名字不匹配，请重试！");
+                return false; // 阻止表单的默认提交
+            }
+        }
+    </script>
+</body>
+</html>
